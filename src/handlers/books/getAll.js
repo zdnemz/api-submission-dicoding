@@ -1,5 +1,5 @@
-import { books } from "../../libs/database.js";
-import { response } from "../../libs/utils/response.js";
+import { books } from '../../libs/database.js';
+import { response } from '../../libs/utils/response.js';
 
 export function getAllBooks(req, h) {
   const { name, reading, finished } = req.query;
@@ -13,18 +13,18 @@ export function getAllBooks(req, h) {
   }
 
   if (reading) {
-    const isReading = reading === "1";
+    const isReading = reading === '1';
     result = result.filter((book) => book.reading === isReading);
   }
 
   if (finished) {
-    const isFinished = finished === "1";
+    const isFinished = finished === '1';
     result = result.filter((book) => book.finished === isFinished);
   }
 
   return h
     .response(
-      response("success", null, {
+      response('success', null, {
         books: result.map((book) => ({
           id: book.id,
           name: book.name,
